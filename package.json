@@ -1,0 +1,17 @@
+{
+  "name": "generator-trow",
+  "version": "0.1.0",
+  "description": "generate rows for table",
+  "files": [
+    "app",
+    "router"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  },
+  "author": "Ross Libby ross@rossdl.com",
+  "license": "ISC"
+}
