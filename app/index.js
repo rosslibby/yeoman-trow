@@ -28,7 +28,8 @@ module.exports = class extends Generator {
             {
                 type: 'confirm',
                 name: 'finished',
-                message: 'Do you need to add another column?'
+                message: 'Do you need to add another column?',
+                default: true
             }
         ]).then((answers) => {
             const { finished, heading, key, type } = answers
@@ -49,16 +50,20 @@ module.exports = class extends Generator {
                 return this.columns()
 
             console.log('[')
-            columns.forEach(column => {
-                console.log('    {')
+            columns.forEach((column, i) => {
+                const comma = i === columns.length - 1
+                    ? ''
+                    : ','
+
+                console.log(`    {`)
                 console.log(`        children: '${column.children}',`)
                 console.log(`        type: '${column.type}',`)
-                console.log('        props: {')
+                console.log(`        props: {`)
                 console.log(`            heading: '${column.props.heading}${typeof column.props.link !== 'undefined' ? ',' : ''}'`)
                 if (typeof column.props.link !== 'undefined')
                     console.log(`            link: ${column.props.link}`)
                 console.log(`        }`)
-                console.log('    }')
+                console.log(`    }${comma}`)
             })
             console.log(']')
         })
